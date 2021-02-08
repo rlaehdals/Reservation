@@ -5,7 +5,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Entity
 @Getter @Setter
@@ -21,8 +20,6 @@ public class Date {
 
     @Enumerated(EnumType.STRING)
     private DateStatus dateStatus;
-
-
 
     //생성 메소드
 
