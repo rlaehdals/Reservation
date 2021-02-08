@@ -57,6 +57,7 @@ public class UserInfo implements UserDetails {
         }
         return roles;
     }
+
     @Override
     public String getPassword() {
         return password;

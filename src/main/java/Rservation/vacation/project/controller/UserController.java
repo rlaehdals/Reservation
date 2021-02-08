@@ -35,7 +35,6 @@ public class UserController {
         Address address = new Address(infoDto.getCity(), infoDto.getStreet(), infoDto.getZipCode());
         UserInfo userInfo = new UserInfo(infoDto.getEmail(), infoDto.getPassword(),infoDto.getAuth(), infoDto.getName()
         , infoDto.getPhoneNumber(), address);
-
         userServiceImpl.save(userInfo);
         return "redirect:/login";
     }

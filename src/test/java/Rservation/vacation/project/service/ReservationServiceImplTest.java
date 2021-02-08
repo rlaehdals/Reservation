@@ -24,8 +24,7 @@ class ReservationServiceImplTest {
     @Autowired ReservationServiceImpl reservationService;
     @Autowired
     ReservationRepositoryImpl reservationRepository;
-    @Autowired
-    EntityManager em;
+    @Autowired EntityManager em;
 
     @Test
     void join(){
