@@ -1,6 +1,4 @@
 package Rservation.vacation.project.config;
-
-import Rservation.vacation.project.service.UserService;
 import Rservation.vacation.project.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
