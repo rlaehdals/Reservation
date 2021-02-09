@@ -1,4 +1,6 @@
 package Rservation.vacation.project.config;
+import Rservation.vacation.project.customsecurity.CustomAuthenticationFilter;
+import Rservation.vacation.project.customsecurity.CustomLoginSuccessHandler;
 import Rservation.vacation.project.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -31,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
 
-        http.authorizeRequests()
+        http.csrf().disable().authorizeRequests()
                 .antMatchers("/login","/signup","/user").permitAll()
                 .antMatchers("/").hasRole("USER")
                 .antMatchers("/admin").hasRole("ADMIN")
@@ -39,7 +41,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/")
+                .successForwardUrl("/login")
+                .failureForwardUrl("/login")
                 .and()
                 .logout()
                 .logoutSuccessUrl("/login")
@@ -48,5 +51,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(userServiceImpl).passwordEncoder(passwordEncoder());
+    }
+    @Bean
+    public CustomLoginSuccessHandler customLoginSuccessHandler(){
+        return new CustomLoginSuccessHandler();
+    }
+    @Bean
+    public CustomAuthenticationFilter customAuthenticationFilter() throws Exception{
+        CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManager());
+        customAuthenticationFilter.setFilterProcessesUrl("/user/login");
+        customAuthenticationFilter.setAuthenticationSuccessHandler(customLoginSuccessHandler());
+        customAuthenticationFilter.afterPropertiesSet();
+        return customAuthenticationFilter;
     }
 }

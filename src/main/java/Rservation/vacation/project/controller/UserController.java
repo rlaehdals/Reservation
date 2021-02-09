@@ -4,6 +4,7 @@ import Rservation.vacation.project.domain.Address;
 import Rservation.vacation.project.domain.UserInfo;
 import Rservation.vacation.project.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -42,5 +43,6 @@ public class UserController {
     public String logoutPage(HttpServletRequest request, HttpServletResponse response){
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
         return "redirect:/login";
+
     }
 }
