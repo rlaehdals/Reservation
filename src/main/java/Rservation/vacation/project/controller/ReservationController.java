@@ -23,7 +23,7 @@ public class ReservationController {
     private final UserService userService;
     private final DateService dateService;
 
-    @GetMapping("/asdffsad")
+    @GetMapping("미정")
     public String createReservationForm(Model model){
         List<UserInfo> userInfo =  userService.findAll();
         List<Date> date = dateService.findAll();
@@ -36,7 +36,7 @@ public class ReservationController {
     @PostMapping("/asdfsd")
     public String createReservation(@RequestParam("userInfoId") Long userInfoId,
                                     @RequestParam("dateId") Long dateId,
-                                    @RequestParam("peopleCount") int peopleCount){
+                                    @RequestParam("peopleCount") int peopleCount) throws Exception{
         reservationService.join(userInfoId,dateId,peopleCount);
         return "home";
     }

@@ -61,6 +61,5 @@ public class Reservation {
                 date.cancel();
             }
         }
-
     }
 }

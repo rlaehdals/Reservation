@@ -29,11 +29,14 @@ public class UserServiceImpl implements UserService{
     public Long save(UserInfo userInfo){
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         userInfo.setPassword(encoder.encode(userInfo.getPassword()));
-
+        duplicateValid(userInfo);
         return userRepository.save(UserInfo.builder()
         .email(userInfo.getEmail())
                 .auth(userInfo.getAuth())
                 .password(userInfo.getPassword()).build()).getId();
+    }
+    private void duplicateValid(UserInfo info) {
+        userRepository.findByEmail(info.getEmail()).ifPresent(m-> {throw new IllegalStateException("이미 등록됌");});
     }
     @Transactional(readOnly = true)
     @Override

@@ -17,12 +17,11 @@ public class UserDto {
     private String email;
     @NotEmpty(message = "비밀 번호는 필수 입니다.")
     private String password;
-    @NotEmpty(message = "필수 선택 입니다.")
-    private String auth;
     @NotEmpty(message = "번호 입력은 필수입니다.")
     private String phoneNumber;
     private String city;
     private String street;
     private String zipCode;
+    private String auth="USER";
 
 }

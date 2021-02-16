@@ -31,6 +31,5 @@ public class CertificationServiceImpl implements CertificationService{
             System.out.println(e.getMessage());
             System.out.println(e.getCode());
         }
-
     }
 }

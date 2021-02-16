@@ -27,5 +27,4 @@ public class SmsController {
         certificationService.certifiedPhoneNumber(phoneNumber,numStr);
         return numStr;
     }
-
 }

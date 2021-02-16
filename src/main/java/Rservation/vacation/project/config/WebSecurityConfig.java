@@ -1,8 +1,10 @@
 package Rservation.vacation.project.config;
 import Rservation.vacation.project.customsecurity.CustomAuthenticationFilter;
+import Rservation.vacation.project.customsecurity.CustomAuthenticationProvider;
 import Rservation.vacation.project.customsecurity.CustomLoginSuccessHandler;
 import Rservation.vacation.project.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,16 +14,18 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 @RequiredArgsConstructor
 @EnableWebSecurity
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
     private final UserServiceImpl userServiceImpl;
 
+    @Autowired
+    private final CustomAuthenticationProvider customAuthenticationProvider;
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public BCryptPasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
@@ -47,10 +51,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutSuccessUrl("/login")
                 .invalidateHttpSession(true);
+                http.authenticationProvider(customAuthenticationProvider);
     }
+
     @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(userServiceImpl).passwordEncoder(passwordEncoder());
+    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) {
+        authenticationManagerBuilder.authenticationProvider(customAuthenticationProvider);
     }
     @Bean
     public CustomLoginSuccessHandler customLoginSuccessHandler(){

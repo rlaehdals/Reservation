@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 @Log4j2
 public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-
     public CustomAuthenticationFilter(AuthenticationManager authenticationManager){
         super.setAuthenticationManager(authenticationManager);
     }
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException{
-        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(request.getParameter("email"),request.getParameter("password"));
+        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(request.getParameter("email")
+                ,request.getParameter("password"));
         setDetails(request,authRequest);
         return this.getAuthenticationManager().authenticate(authRequest);
     }

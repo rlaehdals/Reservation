@@ -36,7 +36,4 @@ public class Date {
     public void cancel(){
         this.setDateStatus(DateStatus.CAN);
     }
-
-
-
 }

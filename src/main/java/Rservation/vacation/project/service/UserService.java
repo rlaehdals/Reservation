@@ -10,5 +10,4 @@ import java.util.List;
 public interface UserService extends UserDetailsService{
     List<UserInfo> findAll();
     Long save(UserInfo userInfo);
-    public UserInfo loadUserByUsername(String email) throws UsernameNotFoundException;
 }
