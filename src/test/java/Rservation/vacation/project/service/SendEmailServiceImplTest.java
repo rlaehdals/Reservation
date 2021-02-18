@@ -20,7 +20,7 @@ class SendEmailServiceImplTest {
         MailDto dto = new MailDto();
         dto.setMessage("임시확인용");
         dto.setTitle("밍");
-        dto.setAddress("andy96823@gmail.com");
+        dto.setAddress("받는사람");
 
         sendEmailService.mailSend(dto);
     }

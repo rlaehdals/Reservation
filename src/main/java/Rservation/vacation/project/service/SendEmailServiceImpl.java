@@ -17,7 +17,7 @@ public class SendEmailServiceImpl implements SendEmailService{
     private final UserRepository userRepository;
     private final JavaMailSender mailSender;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private static final String FROM_ADDRESS= "rkdlem48@gmail.com";
+    private static final String FROM_ADDRESS= "보내는 사람";
     @Override
     public MailDto createMailAndChangePassword(String userEmail, String userName) {
         String str= getTempPassword();
