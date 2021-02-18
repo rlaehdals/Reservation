@@ -4,6 +4,7 @@ import Rservation.vacation.project.domain.Address;
 import Rservation.vacation.project.domain.UserInfo;
 import Rservation.vacation.project.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -19,6 +20,7 @@ import javax.validation.Valid;
 
 @RequiredArgsConstructor
 @Controller
+@Log4j2
 public class UserController {
 
     private final UserServiceImpl userServiceImpl;
@@ -30,19 +32,21 @@ public class UserController {
     }
     @PostMapping("/user")
     public String signup(@Valid UserDto infoDto, BindingResult result){
+        log.info("로그인 시도");
         if(result.hasErrors()){
+            log.info("실패");
             return "/login";
         }
         Address address = new Address(infoDto.getCity(), infoDto.getStreet(), infoDto.getZipCode());
         UserInfo userInfo = new UserInfo(infoDto.getEmail(), infoDto.getPassword(),infoDto.getAuth(), infoDto.getName()
         , infoDto.getPhoneNumber(), address);
         userServiceImpl.save(userInfo);
+        log.info("로그인 성공");
         return "redirect:/login";
     }
     @GetMapping("/logout")
     public String logoutPage(HttpServletRequest request, HttpServletResponse response){
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
         return "redirect:/login";
-
     }
 }

@@ -22,7 +22,7 @@ class CertificationServiceImplTest {
             String temp = Integer.toString(rand.nextInt(10));
             num+=temp;
         }
-        String phone="01029905871";
+        String phone="01052381821";
         certificationService.certifiedPhoneNumber(phone,num);
     }
 }

@@ -18,12 +18,4 @@ import static org.junit.jupiter.api.Assertions.*;
 class ReservationRepositoryImplTest {
 
     @Autowired ReservationRepositoryImpl reservationRepository;
-
-    @Test
-    void save(){
-        Reservation reservation = new Reservation();
-        reservationRepository.save(reservation);
-
-        Assertions.assertThat(reservation.getId()).isEqualTo(reservationRepository.findById(reservation.getId()).getId());
-    }
 }

@@ -19,10 +19,12 @@ import javax.annotation.Resource;
 @RequiredArgsConstructor
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
-    @Resource
-    private final UserService userService;
-    @NonNull
+
     private final BCryptPasswordEncoder passwordEncoder;
+
+    private final UserService userService;
+
+
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;

@@ -4,12 +4,10 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.apache.catalina.User;
 
 import javax.persistence.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +56,7 @@ public class Reservation {
     }
     public void cancel(){
         Duration time = Duration.between(this.reservationTime.toLocalTime(), LocalDateTime.now().toLocalTime());
-        if(time.isNegative() || time.getSeconds()>3600){
+        if(time.isNegative() && time.getSeconds()>3600){
             this.setReservationStatus(ReservationStatus.CANCEL);
             for(Date date: dates){
                 date.cancel();

@@ -1,7 +1,8 @@
-package Rservation.vacation.project.config;
+package Rservation.vacation.project.customsecurity;
 import Rservation.vacation.project.customsecurity.CustomAuthenticationFilter;
 import Rservation.vacation.project.customsecurity.CustomAuthenticationProvider;
 import Rservation.vacation.project.customsecurity.CustomLoginSuccessHandler;
+import Rservation.vacation.project.service.UserService;
 import Rservation.vacation.project.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,21 +14,12 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-@RequiredArgsConstructor
 @EnableWebSecurity
 @Configuration
+@RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private final UserServiceImpl userServiceImpl;
-
-    @Autowired
     private final CustomAuthenticationProvider customAuthenticationProvider;
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
 
     @Override
     public void configure(WebSecurity web) {
@@ -51,9 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutSuccessUrl("/login")
                 .invalidateHttpSession(true);
-                http.authenticationProvider(customAuthenticationProvider);
     }
-
     @Override
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) {
         authenticationManagerBuilder.authenticationProvider(customAuthenticationProvider);
