@@ -20,7 +20,7 @@ public class CertificationServiceImpl implements CertificationService{
         HashMap<String ,String > params = new HashMap<>();
 
         params.put("to", phoneNumber);
-        params.put("from", "01029905871");
+        params.put("from", "보내는 사람 번호");
         params.put("type", "SMS");
         params.put("text", "휴대폰인증 테스트 메시지 : 인증번호는" + "["+numStr+"]" + "입니다.");
         params.put("vacation.project", "test app 2.2");
