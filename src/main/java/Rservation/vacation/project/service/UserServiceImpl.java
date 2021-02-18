@@ -35,6 +35,18 @@ public class UserServiceImpl implements UserService{
                 .auth(userInfo.getAuth())
                 .password(userInfo.getPassword()).build()).getId();
     }
+
+    @Override
+    public boolean userEmailCheck(String userEmail, String userName) {
+        UserInfo userInfo = userRepository.findByEmail(userEmail).get();
+        if(userInfo!=null &&userInfo.getEmail().equals(userName)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     private void duplicateValid(UserInfo info) {
         userRepository.findByEmail(info.getEmail()).ifPresent(m-> {throw new IllegalStateException("이미 등록됌");});
     }

@@ -10,4 +10,5 @@ import java.util.List;
 public interface UserService extends UserDetailsService{
     List<UserInfo> findAll();
     Long save(UserInfo userInfo);
+    boolean userEmailCheck(String userEmail, String userName);
 }
