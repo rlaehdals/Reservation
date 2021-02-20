@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,8 +56,10 @@ public class Reservation {
         return reservation;
     }
     public void cancel(){
-        Duration time = Duration.between(this.reservationTime.toLocalTime(), LocalDateTime.now().toLocalTime());
-        if(time.isNegative() && time.getSeconds()>3600){
+        Date date1 = dates.get(0);
+        LocalTime localTime = date1.getDateTime().toLocalTime();
+        LocalTime now = LocalTime.now();
+        if(localTime.getHour()-now.getHour()>0){
             this.setReservationStatus(ReservationStatus.CANCEL);
             for(Date date: dates){
                 date.cancel();

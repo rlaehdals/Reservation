@@ -43,6 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutSuccessUrl("/login")
                 .invalidateHttpSession(true);
+                http.authenticationProvider(customAuthenticationProvider);
     }
     @Override
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) {

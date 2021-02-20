@@ -1,4 +1,4 @@
-[INFO ] 2021-02-18 17:19:18.479 [SpringContextShutdownHook] ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
-[INFO ] 2021-02-18 17:19:18.492 [SpringContextShutdownHook] LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2021-02-18 17:19:18.498 [SpringContextShutdownHook] HikariDataSource - HikariPool-1 - Shutdown initiated...
-[INFO ] 2021-02-18 17:19:18.531 [SpringContextShutdownHook] HikariDataSource - HikariPool-1 - Shutdown completed.
+[INFO ] 2021-02-20 23:52:18.409 [SpringContextShutdownHook] ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 2021-02-20 23:52:18.417 [SpringContextShutdownHook] LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2021-02-20 23:52:18.421 [SpringContextShutdownHook] HikariDataSource - HikariPool-1 - Shutdown initiated...
+[INFO ] 2021-02-20 23:52:18.440 [SpringContextShutdownHook] HikariDataSource - HikariPool-1 - Shutdown completed.

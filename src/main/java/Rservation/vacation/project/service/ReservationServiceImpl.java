@@ -32,7 +32,6 @@ public class ReservationServiceImpl implements ReservationService {
         reservationRepository.save(reservation);
         return reservation.getId();
     }
-
     private void overCount(int peopleCount) {
         if(peopleCount>=5){
             throw new IllegalStateException("5명 이상은 안됩니다.");
