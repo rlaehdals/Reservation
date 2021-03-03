@@ -17,6 +17,7 @@ public class Date {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="reservation_id")
     private Reservation reservation;
 
     private LocalDateTime dateTime;

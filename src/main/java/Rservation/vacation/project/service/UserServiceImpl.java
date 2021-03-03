@@ -32,10 +32,14 @@ public class UserServiceImpl implements UserService{
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         userInfo.setPassword(encoder.encode(userInfo.getPassword()));
         duplicateValid(userInfo);
-        return userRepository.save(UserInfo.builder()
-        .email(userInfo.getEmail())
+        return userRepository.save(getBuild(userInfo)).getId();
+    }
+
+    private UserInfo getBuild(UserInfo userInfo) {
+        return UserInfo.builder()
+                .email(userInfo.getEmail())
                 .auth(userInfo.getAuth())
-                .password(userInfo.getPassword()).build()).getId();
+                .password(userInfo.getPassword()).build();
     }
 
     @Override

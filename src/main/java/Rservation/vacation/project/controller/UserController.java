@@ -25,25 +25,26 @@ public class UserController {
 
     private final UserServiceImpl userServiceImpl;
 
-    @GetMapping("/login/user")
+    @GetMapping("/login/signUp")
     public String createSignup(Model model){
         model.addAttribute("user", new UserDto());
         return "/login";
     }
-    @PostMapping("/login/user")
+    @PostMapping("/login/signUp")
     public String signup(@Valid UserDto infoDto, BindingResult result){
-        log.info("로그인 시도");
+        log.info("회원가입");
         if(result.hasErrors()){
-            log.info("실패");
+            log.info("회원가입 실패");
             return "/login";
         }
         Address address = new Address(infoDto.getCity(), infoDto.getStreet(), infoDto.getZipCode());
         UserInfo userInfo = new UserInfo(infoDto.getEmail(), infoDto.getPassword(),infoDto.getAuth(), infoDto.getName()
         , infoDto.getPhoneNumber(), address);
         userServiceImpl.save(userInfo);
-        log.info("로그인 성공");
+        log.info("회원가입 성공");
         return "redirect:/";
     }
+
     @GetMapping("/logout")
     public String logoutPage(HttpServletRequest request, HttpServletResponse response){
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
