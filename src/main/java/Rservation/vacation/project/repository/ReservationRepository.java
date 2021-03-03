@@ -11,4 +11,6 @@ public interface ReservationRepository {
     Reservation findById(Long id);
     List<Reservation> findByName(String name);
     List<Reservation> findAll();
+
+    List<Reservation> findAllWithJoinFetch();
 }

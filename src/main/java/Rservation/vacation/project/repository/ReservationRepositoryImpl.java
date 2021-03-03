@@ -34,4 +34,14 @@ public class ReservationRepositoryImpl implements ReservationRepository{
     public List<Reservation> findAll() {
         return em.createQuery("select r from Reservation r", Reservation.class).getResultList();
     }
+
+    @Override
+    public List<Reservation> findAllWithJoinFetch() {
+        return em.createQuery(
+                "select r from Reservation r" +
+                " join fetch r.userInfo")
+                .setFirstResult(0)
+                .setMaxResults(100)
+                .getResultList();
+    }
 }

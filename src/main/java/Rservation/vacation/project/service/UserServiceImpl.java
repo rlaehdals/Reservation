@@ -1,6 +1,7 @@
 package Rservation.vacation.project.service;
 
 import Rservation.vacation.project.controller.UserDto;
+import Rservation.vacation.project.domain.Address;
 import Rservation.vacation.project.domain.UserInfo;
 import Rservation.vacation.project.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -45,6 +47,19 @@ public class UserServiceImpl implements UserService{
         else{
             return false;
         }
+    }
+
+    @Override
+    public UserInfo findById(Long userId) {
+        return userRepository.findById(userId).get();
+    }
+
+    @Override
+    public Long updateAddress(Long userId, Address address) {
+        Optional<UserInfo> user = userRepository.findById(userId);
+        UserInfo userInfo = user.get();
+        userInfo.changeAddress(address);
+        return userId;
     }
 
     private void duplicateValid(UserInfo info) {

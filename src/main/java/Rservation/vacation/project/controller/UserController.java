@@ -25,12 +25,12 @@ public class UserController {
 
     private final UserServiceImpl userServiceImpl;
 
-    @GetMapping("/user")
+    @GetMapping("/login/user")
     public String createSignup(Model model){
         model.addAttribute("user", new UserDto());
         return "/login";
     }
-    @PostMapping("/user")
+    @PostMapping("/login/user")
     public String signup(@Valid UserDto infoDto, BindingResult result){
         log.info("로그인 시도");
         if(result.hasErrors()){
@@ -42,11 +42,11 @@ public class UserController {
         , infoDto.getPhoneNumber(), address);
         userServiceImpl.save(userInfo);
         log.info("로그인 성공");
-        return "redirect:/login";
+        return "redirect:/";
     }
     @GetMapping("/logout")
     public String logoutPage(HttpServletRequest request, HttpServletResponse response){
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
-        return "redirect:/login";
+        return "redirect:/";
     }
 }

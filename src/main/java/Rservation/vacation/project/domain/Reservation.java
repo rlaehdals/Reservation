@@ -4,9 +4,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
-import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -55,11 +54,16 @@ public class Reservation {
         reservation.setPeopleCount(peopleCount);
         return reservation;
     }
+    public void setName(UserInfo userInfo){
+        this.name= userInfo.getName();
+    }
     public void cancel(){
         Date date1 = dates.get(0);
-        LocalTime localTime = date1.getDateTime().toLocalTime();
-        LocalTime now = LocalTime.now();
-        if(localTime.getHour()-now.getHour()>0){
+        LocalDateTime localDateTime = date1.getDateTime();
+        LocalDateTime now = LocalDateTime.now();
+        LocalDate localDate = localDateTime.toLocalDate();
+        LocalDate nowDate = now.toLocalDate();
+        if(nowDate.isBefore(localDate)||localDateTime.getHour()-now.getHour()>0){
             this.setReservationStatus(ReservationStatus.CANCEL);
             for(Date date: dates){
                 date.cancel();

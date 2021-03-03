@@ -47,7 +47,7 @@ class ReservationServiceImplTest {
         Address address =new Address("a", "a" ,"a");
         UserInfo userInfo = new UserInfo("a","A","a","a","a", address);
         Long userId = userService.save(userInfo);
-        Date date = Date.createDate("2021", "2", "20", "12", "1", "1");
+        Date date = Date.createDate("2021", "2", "23", "12", "1", "1");
         Long dateId = dateService.join(date);
         Long reservationId = reservationService.join(userId, dateId, 4);
         reservationService.cancelReservation(reservationId);

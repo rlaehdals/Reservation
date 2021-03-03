@@ -1,4 +1,8 @@
-[INFO ] 2021-02-20 23:52:18.409 [SpringContextShutdownHook] ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
-[INFO ] 2021-02-20 23:52:18.417 [SpringContextShutdownHook] LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2021-02-20 23:52:18.421 [SpringContextShutdownHook] HikariDataSource - HikariPool-1 - Shutdown initiated...
-[INFO ] 2021-02-20 23:52:18.440 [SpringContextShutdownHook] HikariDataSource - HikariPool-1 - Shutdown completed.
+[INFO ] 2021-02-23 01:10:34.868 [restartedMain] ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 2021-02-23 01:10:35.101 [restartedMain] Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2021-02-23 01:10:35.124 [restartedMain] TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2021-02-23 01:10:35.136 [restartedMain] Application - Started Application in 6.81 seconds (JVM running for 9.424)
+[INFO ] 2021-02-23 01:10:40.016 [http-nio-8080-exec-1] [/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2021-02-23 01:10:40.016 [http-nio-8080-exec-1] DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2021-02-23 01:10:40.017 [http-nio-8080-exec-1] DispatcherServlet - Completed initialization in 1 ms
+[WARN ] 2021-02-23 01:10:40.436 [http-nio-8080-exec-1] SessionIdGeneratorBase - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [379] milliseconds.

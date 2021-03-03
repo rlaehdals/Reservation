@@ -58,6 +58,14 @@ public class UserInfo implements UserDetails {
         return roles;
     }
 
+    public UserInfo(String name) {
+        this.name = name;
+    }
+
+    public void changeAddress(Address address){
+        this.address=address;
+    }
+
     @Override
     public String getPassword() {
         return password;

@@ -1,6 +1,7 @@
 package Rservation.vacation.project.service;
 
 import Rservation.vacation.project.controller.UserDto;
+import Rservation.vacation.project.domain.Address;
 import Rservation.vacation.project.domain.UserInfo;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,4 +12,6 @@ public interface UserService extends UserDetailsService{
     List<UserInfo> findAll();
     Long save(UserInfo userInfo);
     boolean userEmailCheck(String userEmail, String userName);
+    UserInfo findById(Long userId);
+    Long updateAddress(Long userId, Address address);
 }
