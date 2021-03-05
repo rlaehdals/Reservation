@@ -35,20 +35,20 @@ public class ReservationController {
         return "/create/reservation";
     }
     @PostMapping("/login/reservation")
-    public String createReservation(@RequestParam("userInfoId") Long userInfoId,
+    public String createReservation(@PathVariable("userInfoId") Long userInfoId,
                                     @RequestParam("dateId") Long dateId,
                                     @RequestParam("peopleCount") int peopleCount) throws Exception{
         reservationService.join(userInfoId,dateId,peopleCount);
         return "/login/user";
     }
 
-    @PostMapping("/reservation/cancel")
+    @PostMapping("/reservation/cancel/{reservationId}")
     public String cancel(@PathVariable("reservationId") Long reservationId){
         reservationService.cancelReservation(reservationId);
         return "/login/user";
     }
-    @GetMapping("/login/reservation/config/{id}")
-    public String reservationConfig(@PathVariable("id") Long userId, Model model){
+    @GetMapping("/login/reservation/config/{reservationId}")
+    public String reservationConfig(@PathVariable("reservationId") Long userId, Model model){
         UserInfo user = userService.findById(userId);
         List<Reservation> reservation = user.getReservations().stream().collect(Collectors.toList());
         model.addAttribute("reservation",reservation);
