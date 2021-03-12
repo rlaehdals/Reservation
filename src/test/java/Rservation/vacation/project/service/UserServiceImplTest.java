@@ -54,6 +54,5 @@ class UserServiceImplTest {
         Long id = userService.save(userInfo);
         UsernameNotFoundException e = assertThrows(UsernameNotFoundException.class, () -> userService.loadUserByUsername("b"));
         Assertions.assertThat(e.getMessage()).isEqualTo("b");
-
     }
 }

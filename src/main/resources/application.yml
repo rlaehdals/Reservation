@@ -25,3 +25,8 @@ logging:
     org.hibernate.SQL: debug
   config: classpath:log4j2.yml
 
+server:
+  error:
+    include-stacktrace: always
+    include-message: always
+    path: /errors

@@ -1,7 +1,5 @@
-[INFO ] 2021-03-05 14:10:54.717 [restartedMain] ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-[INFO ] 2021-03-05 14:10:54.978 [restartedMain] Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-[INFO ] 2021-03-05 14:10:54.998 [restartedMain] TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
-[INFO ] 2021-03-05 14:10:55.007 [restartedMain] Application - Started Application in 5.069 seconds (JVM running for 7.387)
-[INFO ] 2021-03-05 14:10:58.176 [http-nio-8080-exec-1] [/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-[INFO ] 2021-03-05 14:10:58.183 [http-nio-8080-exec-1] DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-[INFO ] 2021-03-05 14:10:58.184 [http-nio-8080-exec-1] DispatcherServlet - Completed initialization in 1 ms
+[INFO ] 2021-03-10 12:55:22.668 [restartedMain] ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 2021-03-10 12:55:23.159 [restartedMain] Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2021-03-10 12:55:23.186 [restartedMain] TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2021-03-10 12:55:23.203 [restartedMain] Application - Started Application in 10.472 seconds (JVM running for 15.049)
+[WARN ] 2021-03-10 12:56:21.959 [HikariPool-1 housekeeper] HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m3s599ms14µs100ns).

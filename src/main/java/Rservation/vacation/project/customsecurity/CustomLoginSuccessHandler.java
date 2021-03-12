@@ -14,5 +14,7 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
             SecurityContextHolder.getContext().setAuthentication(authentication);
             response.sendRedirect("/userHome");
         }
+
+
 }
 

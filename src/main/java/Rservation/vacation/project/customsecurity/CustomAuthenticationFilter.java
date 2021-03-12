@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 @Log4j2
 public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
+
     public CustomAuthenticationFilter(AuthenticationManager authenticationManager){
         super.setAuthenticationManager(authenticationManager);
     }
@@ -24,5 +25,6 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
         setDetails(request,token);
         return this.getAuthenticationManager().authenticate(token);
     }
+
 
 }
