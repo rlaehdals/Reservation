@@ -32,7 +32,7 @@ public class ReservationController {
         model.addAttribute("userInfo", userInfo);
         model.addAttribute("date", date);
 
-        return "/create/reservation";
+        return "/reservation";
     }
     @PostMapping("/login/reservation")
     public String createReservation(@PathVariable("userInfoId") Long userInfoId,

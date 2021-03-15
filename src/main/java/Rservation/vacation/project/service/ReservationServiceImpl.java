@@ -50,6 +50,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    @Transactional
     public void cancelReservation(Long id) {
         Reservation findId = reservationRepository.findById(id);
         findId.cancel();

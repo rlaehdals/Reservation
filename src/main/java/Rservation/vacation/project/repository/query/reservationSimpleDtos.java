@@ -6,7 +6,6 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 
 @Data
-@Getter
 public class reservationSimpleDtos {
     private String name;
     private int peopleCount;

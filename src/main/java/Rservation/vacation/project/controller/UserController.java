@@ -32,16 +32,16 @@ public class UserController {
     }
     @PostMapping("/login/signUp")
     public String signup(@Valid UserDto infoDto, BindingResult result){
-        log.info("회원가입");
+        log.info("회원가입시도={}",infoDto);
         if(result.hasErrors()){
-            log.info("회원가입 실패");
+            log.info("회원가입 실패={}", infoDto);
             return "/login";
         }
         Address address = new Address(infoDto.getCity(), infoDto.getStreet(), infoDto.getZipCode());
         UserInfo userInfo = new UserInfo(infoDto.getEmail(), infoDto.getPassword(),infoDto.getAuth(), infoDto.getName()
         , infoDto.getPhoneNumber(), address);
         userServiceImpl.save(userInfo);
-        log.info("회원가입 성공");
+        log.info("회원가입 성공={}", infoDto);
         return "redirect:/";
     }
 
