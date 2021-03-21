@@ -4,10 +4,7 @@ import Rservation.vacation.project.domain.Reservation;
 import Rservation.vacation.project.repository.ReservationRepository;
 import Rservation.vacation.project.repository.query.ReservationQueryRepository;
 import Rservation.vacation.project.repository.query.reservationSimpleDtos;
-import Rservation.vacation.project.repository.query.reservationSimpleDtos;
-import Rservation.vacation.project.service.ReservationService;
 import lombok.Data;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +28,6 @@ public class ReservationSimpleApi {
         }
         return all;
     }
-
     @GetMapping("/api/v2/simpleReservations")
     public result reservationV2(){
         List<Reservation> all = reservationRepository.findAll();
@@ -54,12 +50,7 @@ public class ReservationSimpleApi {
         List<reservationSimpleDtos> reservationDto = reservationQueryRepository.findReservationDto();
         return new result(reservationDto.size(),reservationDto);
     }
-
-
-
-
     @Data
-    @Getter
     static class result<T>{
         private int count;
         private T data;
@@ -81,10 +72,4 @@ public class ReservationSimpleApi {
             this.localDateTime = localDateTime;
         }
     }
-
-
-
-
-
-
 }

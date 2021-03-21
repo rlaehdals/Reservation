@@ -1,11 +1,9 @@
 package Rservation.vacation.project.service;
 
-import Rservation.vacation.project.controller.UserDto;
 import Rservation.vacation.project.domain.Address;
 import Rservation.vacation.project.domain.UserInfo;
 import Rservation.vacation.project.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
