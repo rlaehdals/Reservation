@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,7 +25,7 @@ class DateServiceImplTest {
     void 확인(){
         Date date = Date.createDate("1", "1", "1", "1", "1", "1");
         Long dateId = dateService.join(date);
-        List<Date> findDate = dateRepository.findById(dateId);
+        Optional<Date> findDate = dateRepository.findById(date.getId());
         Assertions.assertThat(dateId).isEqualTo(findDate.stream().findAny().get().getId());
     }
 }

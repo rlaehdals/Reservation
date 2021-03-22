@@ -11,6 +11,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,8 +30,8 @@ class ReservationServiceImplTest {
         Date date = Date.createDate("1", "1", "1", "1", "10", "1");
         Long dateId = dateService.join(date);
         Long reservationId = reservationService.join(userId, dateId, 4);
-        Reservation findReservation = reservationService.findOne(reservationId);
-        Assertions.assertThat(reservationId).isEqualTo(findReservation.getId());
+        Optional<Reservation> findReservation = reservationService.findOne(reservationId);
+        Assertions.assertThat(reservationId).isEqualTo(findReservation.get().getId());
     }
     @Test
     void join_실패검증(){
@@ -51,6 +52,6 @@ class ReservationServiceImplTest {
         Long dateId = dateService.join(date);
         Long reservationId = reservationService.join(userId, dateId, 4);
         reservationService.cancelReservation(reservationId);
-        Assertions.assertThat(reservationService.findOne(reservationId).getReservationStatus()).isEqualTo(ReservationStatus.CANCEL);
+        Assertions.assertThat(reservationService.findOne(reservationId).get().getReservationStatus()).isEqualTo(ReservationStatus.CANCEL);
     }
 }

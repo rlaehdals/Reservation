@@ -26,7 +26,7 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public Long join(Long userId, Long dateId, int peopleCount) {
         Optional<UserInfo> userInfo = userRepository.findById(userId);
-        List<Date> date = dateRepository.findById(dateId);
+        Optional<Date> date = dateRepository.findById(dateId);
         overCount(peopleCount);
         Reservation reservation = Reservation.createReservation(userInfo.get(), date.stream().findAny().get(), peopleCount);
         reservationRepository.save(reservation);
@@ -40,7 +40,7 @@ public class ReservationServiceImpl implements ReservationService {
 
 
     @Override
-    public Reservation findOne(Long reservationId) {
+    public Optional<Reservation> findOne(Long reservationId) {
         return reservationRepository.findById(reservationId);
     }
 
@@ -52,7 +52,7 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     @Transactional
     public void cancelReservation(Long id) {
-        Reservation findId = reservationRepository.findById(id);
-        findId.cancel();
+        Optional<Reservation> findId = reservationRepository.findById(id);
+        findId.get().cancel();
     }
 }

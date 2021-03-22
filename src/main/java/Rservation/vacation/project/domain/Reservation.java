@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 @Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Reservation {
+public class Reservation extends BaseEntity{
 
     @Id @GeneratedValue
     @Column(name="reservation_id")
@@ -69,5 +69,8 @@ public class Reservation {
             }
         }
         dates.remove(0);
+    }
+    public void setFirstTime(){
+
     }
 }

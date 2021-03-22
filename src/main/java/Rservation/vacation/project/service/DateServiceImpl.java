@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,13 +21,13 @@ public class DateServiceImpl implements DateService{
         return date.getId();
     }
     @Override
-    public List<Date> findById(Long id) {
+    public Optional<Date> findById(Long id) {
         return dateRepository.findById(id);
     }
 
     @Override
     public List<Date> findAll() {
-        return dateRepository.findByAll();
+        return dateRepository.findAll();
     }
 }
 
