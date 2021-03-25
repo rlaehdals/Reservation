@@ -25,7 +25,7 @@ public class ReservationApi {
     @GetMapping("/api/v1/reservations")
     public result reservationV1(){
         PageRequest pageRequest = PageRequest.of(0, 10, Sort.by(Sort.Direction.ASC, "reservationTime"));
-        Page<Reservation> all = reservationRepository.findAllWithJoinFetch(pageRequest);
+        List<Reservation> all = reservationRepository.findAllWithJoinFetch(pageRequest);
         List<reservationSimpleDto> collect = all.stream()
                 .map(o -> new reservationSimpleDto(o.getName(), o.getPeopleCount(), o.getReservationTime()))
                 .collect(Collectors.toList());

@@ -12,10 +12,10 @@ import javax.persistence.QueryHint;
 import java.util.List;
 import java.util.Optional;
 
-public interface ReservationRepository extends JpaRepository<Reservation, Long> {
+public interface ReservationRepository extends JpaRepository<Reservation, Long>,ReservationRepositoryCustom {
 
-    @Query(value = "select r from Reservation r join fetch r.userInfo")
-    Page<Reservation> findAllWithJoinFetch(Pageable pageable);
+//    @Query(value = "select r from Reservation r join fetch r.userInfo")
+//    List<Reservation> findAllWithJoinFetch(Pageable pageable);
 
     @Override
     @QueryHints(value = @QueryHint(name="org.hibernate.readOnly", value = "true"))

@@ -1,6 +1,7 @@
 plugins {
 	id 'org.springframework.boot' version '2.4.2'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 	id 'java'
 }
 
@@ -38,8 +39,23 @@ dependencies {
 	compile 'org.springframework.boot:spring-boot-starter-log4j2'
 	compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.10.3'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'com.querydsl:querydsl-jpa'
 }
 
 test {
 	useJUnitPlatform()
+}
+def querydslDir = "$buildDir/generated/vacation.project"
+querydsl {
+	jpa = true
+	querydslSourcesDir = querydslDir
+}
+sourceSets {
+	main.java.srcDir querydslDir
+}
+configurations {
+	querydsl.extendsFrom compileClasspath
+}
+compileQuerydsl {
+	options.annotationProcessorPath = configurations.querydsl
 }

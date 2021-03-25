@@ -1,9 +1,9 @@
 package Rservation.vacation.project.api;
 
 import Rservation.vacation.project.domain.Reservation;
+import Rservation.vacation.project.domain.ReservationDto;
 import Rservation.vacation.project.repository.ReservationRepository;
 import Rservation.vacation.project.repository.query.ReservationQueryRepository;
-import Rservation.vacation.project.repository.query.reservationSimpleDtos;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -43,7 +43,7 @@ public class ReservationSimpleApi {
     @GetMapping("/api/v3/simpleReservations")
     public result reservationV3(){
         PageRequest pageRequest = PageRequest.of(0, 10, Sort.by(Sort.Direction.ASC, "reservationTime"));
-        Page<Reservation> all = reservationRepository.findAllWithJoinFetch(pageRequest);
+        List<Reservation> all = reservationRepository.findAllWithJoinFetch(pageRequest);
         List<reservationSimpleDto> collect = all.stream()
                 .map(o -> new reservationSimpleDto(o.getName(), o.getPeopleCount(), o.getReservationTime()))
                 .collect(Collectors.toList());
@@ -51,7 +51,7 @@ public class ReservationSimpleApi {
     }
     @GetMapping("/api/v4/simpleOrders")
     public result reservationV4(){
-        List<reservationSimpleDtos> reservationDto = reservationQueryRepository.findReservationDto();
+        List<ReservationDto> reservationDto = reservationQueryRepository.findReservationDto();
         return new result(reservationDto.size(),reservationDto);
     }
     @Data
