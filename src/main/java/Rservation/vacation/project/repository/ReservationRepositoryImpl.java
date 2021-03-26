@@ -1,11 +1,8 @@
 package Rservation.vacation.project.repository;
 
-import Rservation.vacation.project.domain.QReservation;
-import Rservation.vacation.project.domain.QUserInfo;
 import Rservation.vacation.project.domain.Reservation;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import javax.persistence.EntityManager;
