@@ -54,4 +54,8 @@ public class ReservationController {
         model.addAttribute("reservation",reservation);
         return "/login/reservationList";
     }
+    @GetMapping("/reservation/list")
+    public String reservationStatus(){
+        return "";
+    }
 }
